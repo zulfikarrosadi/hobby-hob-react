@@ -9,9 +9,10 @@ import Home from './pages/Home';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import RequireAuth from './layouts/RequireAuth';
-import Hobbies from './pages/Hobbies';
 import Profile from './pages/Profile';
 import Hobby from './pages/Hobby';
+import Warehouse from './pages/Warehouse';
+import Stocks from './pages/Stocks';
 
 function App() {
   const router = createBrowserRouter(
@@ -23,8 +24,9 @@ function App() {
           <Route path="signup" element={<SignUp />} />
         </Route>
         <Route element={<RequireAuth />}>
-          <Route path="hobbies">
-            <Route index element={<Hobbies />} />
+          <Route path="warehouse">
+            <Route index element={<Warehouse />} />
+            <Route path=":id/stocks" element={<Stocks />} />
             <Route path=":hobbyId" element={<Hobby />} />
           </Route>
           <Route path="me" element={<Profile />} />

@@ -11,7 +11,14 @@ function useAxios() {
         return config;
       },
       async function (error) {
-        if (error.response && error.response.status === 401) {
+        console.log(error);
+
+        if (
+          error.response &&
+          error.response.status === 401 &&
+          !error.config.sent
+        ) {
+          error.config.sent = true;
           try {
             await refresh();
             return axios.request(error.config);
@@ -20,6 +27,7 @@ function useAxios() {
             return Promise.reject(error);
           }
         }
+        return Promise.reject(error);
       },
     );
 

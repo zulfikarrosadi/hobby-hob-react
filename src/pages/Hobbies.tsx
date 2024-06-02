@@ -28,7 +28,7 @@ function Hobbies() {
       .then((data) => {
         setIsLoading(false);
         console.log(data);
-        setHobbies(data.data.hobbies);
+        setHobbies(data.daupdateta.hobbies);
       })
       .catch((error) => console.log(error));
 
